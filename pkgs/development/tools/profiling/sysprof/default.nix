@@ -3,6 +3,7 @@
   lib,
   desktop-file-utils,
   fetchurl,
+  elfutils,
   gettext,
   glib,
   gtk4,
@@ -51,6 +52,7 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   buildInputs = [
+    elfutils
     glib
     gtk4
     json-glib
