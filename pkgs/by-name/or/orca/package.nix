@@ -18,7 +18,7 @@
   dbus,
   xkbcomp,
   procps,
-  lsof,
+  gnugrep,
   coreutils,
   gsettings-desktop-schemas,
   speechd-minimal,
@@ -41,7 +41,7 @@ python3.pkgs.buildPythonApplication rec {
   patches = [
     (replaceVars ./fix-paths.patch {
       cat = "${coreutils}/bin/cat";
-      lsof = "${lsof}/bin/lsof";
+      grep = "${gnugrep}/bin/grep";
       pgrep = "${procps}/bin/pgrep";
       xkbcomp = "${xkbcomp}/bin/xkbcomp";
     })
