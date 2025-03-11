@@ -18,7 +18,7 @@
 
 buildPythonPackage rec {
   pname = "pygobject";
-  version = "3.51.0";
+  version = "3.52.1";
 
   outputs = [
     "out"
@@ -30,8 +30,8 @@ buildPythonPackage rec {
   format = "other";
 
   src = fetchurl {
-    url = "mirror://gnome/sources/${pname}/${lib.versions.majorMinor version}/${pname}-${version}.tar.xz";
-    hash = "sha256-XY7GSwNKKaFMNzlUFDagfqDeg8ijlMbl7KqeLlt7TnI=";
+    url = "mirror://gnome/sources/pygobject/${lib.versions.majorMinor version}/pygobject-${version}.tar.gz";
+    hash = "sha256-jUh/+bn770I5Gel/fxyT/uH82PeLjZIMaORoR7yu44E=";
   };
 
   depsBuildBuild = [ pkg-config ];
@@ -63,7 +63,7 @@ buildPythonPackage rec {
   passthru = {
     updateScript = gnome.updateScript {
       packageName = pname;
-      attrPath = "python3.pkgs.${pname}3";
+      attrPath = "python3.pkgs.pygobject3";
       versionPolicy = "odd-unstable";
     };
   };
