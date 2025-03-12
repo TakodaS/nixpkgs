@@ -14,18 +14,17 @@
   gnome,
 }:
 
-stdenv.mkDerivation rec {
+stdenv.mkDerivation (finalAttrs: {
   pname = "d-spy";
   version = "48.rc";
 
   outputs = [
     "out"
-    "lib"
     "dev"
   ];
 
   src = fetchurl {
-    url = "mirror://gnome/sources/d-spy/${lib.versions.major version}/d-spy-${version}.tar.xz";
+    url = "mirror://gnome/sources/d-spy/${lib.versions.major finalAttrs.version}/d-spy-${finalAttrs.version}.tar.xz";
     hash = "sha256-feUoCoP8fS99DJJLM2/AUyxCuMTIbafZ6n/G54xOsC0=";
   };
 
@@ -55,11 +54,8 @@ stdenv.mkDerivation rec {
     description = "D-Bus exploration tool";
     mainProgram = "d-spy";
     homepage = "https://gitlab.gnome.org/GNOME/d-spy";
-    license = with licenses; [
-      lgpl3Plus # library
-      gpl3Plus # app
-    ];
+    license = licenses.gpl3Plus;
     maintainers = teams.gnome.members;
     platforms = platforms.linux;
   };
-}
+})
